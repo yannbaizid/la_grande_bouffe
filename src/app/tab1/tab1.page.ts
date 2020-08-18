@@ -20,10 +20,16 @@ export class Tab1Page {
   }
 
   getRecettesDisplayed(event: any): void {
-    const valueSearched = event.target.value;
-    this.recettesDisplayed = this.recettes.filter((recette) => {
-      return (recette.intitule.toLowerCase().indexOf(valueSearched.toLowerCase()) > -1);
-    });
+    const valueSearched: string = event.target.value;
+    if (valueSearched.length > 2) {
+      this.recettesDisplayed = this.recettes.filter((recette) => {
+        return (recette.intitule.toLowerCase().indexOf(valueSearched.toLowerCase()) > -1);
+      });
+
+    }
+    else {
+      this.recettesDisplayed = [];
+    }
   }
 
 }
