@@ -12,58 +12,11 @@
       <ion-title size="large">Tab 1</ion-title>
     </ion-toolbar>
   </ion-header>
-test
-  <div id="container">
-    Bien ou bien?
-  </div>
-  
-  <div>
-    Bien ou bien?
-  </div>
-  <div>
-    Bien ou bien?
-  </div>
-  <div>
-    Bien ou bien?
-  </div>
-  <div>
-    Bien ou bien?
-  </div>
-  <div>
-    Bien ou bien?
-  </div>
-  <div>
-    Bien ou bien?
-  </div>
-  <div>
-    Bien ou bien?
-  </div>
-  <div>
-    Bien ou bien?
-  </div>
-  <div>
-    Bien ou bien?
-  </div>
-  <div>
-    Bien ou bien?<br><br><br><br>
-  </div>
-  <div>
-    Bien ou bien?<br><br><br><br>
-  </div>
-  <div>
-    Bien ou bien?<br><br><br><br>
-  </div>
-  <div>
-    Bien ou bien?<br><br><br><br>
-  </div>
-  <div>
-    Bien ou bien?<br><br><br><br>
-  </div>
-  <div>
-    Bien ou bien?<br><br><br><br>
-  </div>
-  <div>
-    Bien ou bien?<br><br><br><br>
-  </div>
-  
+
+
+  <ion-searchbar  type="text" debounce="500" cancelButtonText="" showCancelButton="always" (ionChange)="getRecettesDisplayed($event)">
+  </ion-searchbar>
+<ion-list>
+  <ion-item  *ngFor="let recette of recettesDisplayed">{{recette.intitule}}</ion-item>
+</ion-list>
 </ion-content>

@@ -8,12 +8,22 @@ import { Recette } from '../shared/models/recette';
 })
 export class Tab1Page {
   recettes: Recette[];
+  recettesDisplayed: Recette[];
 
   constructor() {
-    this.recettes.push(new Recette('Paté de porc en croûte de banane', 3, [ 'boeuf', 'banane' ]));
-    this.recettes.push(new Recette('Semoule de moquette Ikea', 4, [ 'moquette', 'miettes de pain' , 'confiture de courgette' ]));
-    this.recettes.push(new Recette('pates-knacki', 1, [ '250 grammes de pâtes', '10 knackis']));
+    this.recettes = [
+      new Recette('Paté de porc en croûte de banane', 3, ['boeuf', 'banane']),
+      new Recette('Semoule de moquette Ikea', 4, ['moquette', 'miettes de pain', 'confiture de courgette']),
+      new Recette('pates-knacki', 2, ['250 grammes de pâtes', '10 knackis']),
+      new Recette('pates au beurre', 1, ['250 grammes de pâtes', '250g de beurre']),
+      new Recette('pates bolognaise', 2, ['250 grammes de pâtes', '3 tomates', '1 oignon', '100g de boeuf haché', '2 gousse d\'ail'])];
+  }
 
+  getRecettesDisplayed(event: any): void {
+    const valueSearched = event.target.value;
+    this.recettesDisplayed = this.recettes.filter((recette) => {
+      return (recette.intitule.toLowerCase().indexOf(valueSearched.toLowerCase()) > -1);
+    });
   }
 
 }
