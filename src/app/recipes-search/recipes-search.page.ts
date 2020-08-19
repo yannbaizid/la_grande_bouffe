@@ -1,14 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Recette } from '../shared/models/recette';
+import { Recipe } from '../shared/models/recipe';
 
 @Component({
   selector: 'app-recipes-search',
   templateUrl: 'recipes-search.page.html',
   styleUrls: ['recipes-search.page.scss']
 })
-export class RecipesSearchPage {
+export class RecipesSearchPage implements OnInit {
   recettes: Recette[];
   recettesDisplayed: Recette[];
+  recipeList: Recipe[];
+  valueSearched = '';
 
   constructor() {
     this.recettes = [
@@ -19,8 +22,12 @@ export class RecipesSearchPage {
       new Recette('pates bolognaise', 2, ['250 grammes de pâtes', '3 tomates', '1 oignon', '100g de boeuf haché', '2 gousse d\'ail'])];
   }
 
-  getRecettesDisplayed(event: any): void {
-    const valueSearched: string = event.target.value;
+  ngOnInit(): void {
+    console.log('INIT BABY!');
+  }
+ 
+
+  getRecettesDisplayed(valueSearched: string): void {
     if (valueSearched.length > 2) {
       this.recettesDisplayed = this.recettes.filter((recette) => {
         return (recette.intitule.toLowerCase().indexOf(valueSearched.toLowerCase()) > -1);

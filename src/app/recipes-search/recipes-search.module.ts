@@ -13,7 +13,7 @@ import { RecipesSearchPageRoutingModule } from './recipes-search-routing.module'
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-   RecipesSearchPageRoutingModule
+   RecipesSearchPageRoutingModule,
   ],
   declarations: [RecipesSearchPage]
 })

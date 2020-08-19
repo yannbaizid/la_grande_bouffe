@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      recipes-search
+      Browse recettes
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -12,10 +12,8 @@
       <ion-title size="large">Recettes</ion-title>
     </ion-toolbar>
   </ion-header>
-
-
-  <ion-searchbar type="text" debounce="500" cancelButtonText="" showCancelButton="always"
-    (ionChange)="getRecettesDisplayed($event)">
+  <ion-searchbar type="text" debounce="500" cancelButtonText="" showCancelButton="always" [(ngModel)]="valueSearched"
+    (ionChange)="getRecettesDisplayed(valueSearched)">
   </ion-searchbar>
   <ion-list>
     <ion-item *ngFor="let recette of recettesDisplayed" class="ion-justify-content-between">
