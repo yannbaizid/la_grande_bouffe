@@ -1,12 +1,18 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{recipe.intitule}}</ion-title>
+    <ion-title>{{recipe.name}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Close</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div>
-    {{recipe.ingredients}}
+    <ion-img  src="../../../assets/img/{{recipe.imageLink}}.png"></ion-img>
   </div>
-  <div>difficulte: {{recipe.difficulte}}/5</div>
+  <div>difficulte: {{recipe.difficulty}}/5</div>
+  <div>temps de prépation: {{recipe.preparationTime}}min</div>
+  <div>nombre de personnes: {{recipe.personsServed}}</div>
+  <div> description à venir</div>
 </ion-content>

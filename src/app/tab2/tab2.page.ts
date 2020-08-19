@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Recipe } from '../shared/models/recipe';
+
 
 @Component({
   selector: 'app-tab2',
@@ -6,6 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
+  recipe: Recipe;
 
   constructor() {}
 

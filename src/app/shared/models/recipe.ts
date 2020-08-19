@@ -3,7 +3,7 @@ id: number;
 name: string;
 difficulty: number;
 preparationTime: number;
-personServed: number;
+personsServed: number;
 imageLink: string;
 
 }

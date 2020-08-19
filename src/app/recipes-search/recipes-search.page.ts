@@ -13,7 +13,7 @@ import {RecipePresentationModalPage} from 'src/app/recipes/recipe-presentation-m
 })
 export class RecipesSearchPage implements OnInit {
   recettes: Recette[];
-  recettesDisplayed: Recette[];
+  recipesDisplayed: Recipe[];
   recipeList: Recipe[];
   valueSearched = '';
   subscription$: Subscription;
@@ -35,6 +35,7 @@ export class RecipesSearchPage implements OnInit {
         // Next
         console.log('CallObservableComponent Next', value);
         this.recipeList = value;
+        this.recipesDisplayed = this.recipeList.slice();
         console.log(value);
         console.log(this.recipeList);
       }, (error) => {
@@ -48,19 +49,19 @@ export class RecipesSearchPage implements OnInit {
   }
 
 
-  getRecettesDisplayed(valueSearched: string): void {
+  getRecipesDisplayed(valueSearched: string): void {
     if (valueSearched.length > 2) {
-      this.recettesDisplayed = this.recettes.filter((recette) => {
-        return (recette.intitule.toLowerCase().indexOf(valueSearched.toLowerCase()) > -1);
+      this.recipesDisplayed = this.recipeList.filter((recipe) => {
+        return (recipe.name.toLowerCase().indexOf(valueSearched.toLowerCase()) > -1);
       });
 
     }
     else {
-      this.recettesDisplayed = [];
+      this.recipesDisplayed = this.recipeList.slice();
     }
   }
 
-  async createRecipeModal(recipe: Recette) {
+  async createRecipeModal(recipe: Recipe) {
     console.log('create modal');
     const modal = await this.recipeModalController.create({
       component: RecipePresentationModalPage,
