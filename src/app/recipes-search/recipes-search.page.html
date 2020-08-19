@@ -11,14 +11,34 @@
     <ion-toolbar>
       <ion-title size="large">Recettes</ion-title>
     </ion-toolbar>
+    
   </ion-header>
+  <!-- {{recipeList | json}} -->
+
+
+
   <ion-searchbar type="text" debounce="500" cancelButtonText="" showCancelButton="always" [(ngModel)]="valueSearched"
-    (ionChange)="getRecettesDisplayed(valueSearched)">
-  </ion-searchbar>
+  (ionChange)="getRecettesDisplayed(valueSearched)">
+</ion-searchbar>
   <ion-list>
-    <ion-item *ngFor="let recette of recettesDisplayed" class="ion-justify-content-between">
-      {{recette.intitule}}
+    <ion-item (click)="createRecipeModal(recette)" *ngFor="let recette of recettesDisplayed" class="ion-justify-content-between">
+      <span > {{recette.intitule}}</span>
       <ion-icon name="add-circle-outline"></ion-icon>
     </ion-item>
   </ion-list>
+
+  <ion-card *ngFor="let recipe of recipeList">
+    <ion-card-header>
+      <ion-img  src="../../assets/img/{{recipe.imageLink}}.png"></ion-img>
+
+      <ion-card-title>{{recipe.name}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      Keep close to Nature's heart... and break clear away, once in awhile,
+      and climb a mountain or spend a week in the woods. Wash your spirit clean.
+    </ion-card-content>
+  </ion-card>
+
+
 </ion-content>

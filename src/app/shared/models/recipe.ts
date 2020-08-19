@@ -4,5 +4,6 @@ name: string;
 difficulty: number;
 preparationTime: number;
 personServed: number;
+imageLink: string;
 
 }

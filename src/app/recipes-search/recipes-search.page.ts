@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Recette } from '../shared/models/recette';
 import { Recipe } from '../shared/models/recipe';
+import { RecipeListService } from 'src/app/shared/services/recipe-list.service';
+import { Subscription } from 'rxjs';
+import { ModalController } from '@ionic/angular';
+import {RecipePresentationModalPage} from 'src/app/recipes/recipe-presentation-modal/recipe-presentation-modal.page';
 
 @Component({
   selector: 'app-recipes-search',
@@ -12,8 +16,10 @@ export class RecipesSearchPage implements OnInit {
   recettesDisplayed: Recette[];
   recipeList: Recipe[];
   valueSearched = '';
+  subscription$: Subscription;
 
-  constructor() {
+  constructor(private recipeListService: RecipeListService,
+              public recipeModalController: ModalController) {
     this.recettes = [
       new Recette('Paté de porc en croûte de banane', 3, ['boeuf', 'banane']),
       new Recette('Semoule de moquette Ikea', 4, ['moquette', 'miettes de pain', 'confiture de courgette']),
@@ -23,9 +29,24 @@ export class RecipesSearchPage implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('INIT BABY!');
+    console.log('INIT' + this.constructor.name + 'BABY!');
+    this.subscription$ = this.recipeListService.getRecipesList().subscribe(
+      (value: Recipe[]) => {
+        // Next
+        console.log('CallObservableComponent Next', value);
+        this.recipeList = value;
+        console.log(value);
+        console.log(this.recipeList);
+      }, (error) => {
+        // Error
+        console.error('CallObservableComponent error', error);
+      }, () => {
+        // Complete
+        console.log('CallObservableComponent Complete');
+      }
+    );
   }
- 
+
 
   getRecettesDisplayed(valueSearched: string): void {
     if (valueSearched.length > 2) {
@@ -37,6 +58,15 @@ export class RecipesSearchPage implements OnInit {
     else {
       this.recettesDisplayed = [];
     }
+  }
+
+  async createRecipeModal(recipe: Recette) {
+    console.log('create modal');
+    const modal = await this.recipeModalController.create({
+      component: RecipePresentationModalPage,
+      componentProps:  {recipe}
+    });
+    return await modal.present();
   }
 
 }
