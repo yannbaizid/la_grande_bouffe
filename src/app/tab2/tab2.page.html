@@ -16,14 +16,28 @@
   </ion-header>
   <form >
     <ion-item>
-      <ion-label>Todo</ion-label>
-      <ion-input type="text" [(ngModel)]="recipe.name" name="title"></ion-input>
+      <ion-label>Name:</ion-label>
+      <ion-input type="text" [(ngModel)]="recipe.name" name="name"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Description</ion-label>
-      <ion-textarea [(ngModel)]="recipe.difficulty" name="description"></ion-textarea>
+      <ion-label>Difficulté:</ion-label>
+      <ion-input type="number" [(ngModel)]="recipe.difficulty" name="difficulty" max="5" min="0"></ion-input>
     </ion-item>
-    <button ion-button type="submit" block>Add Todo</button>
+    <ion-item>
+      <ion-label>nb personnes:</ion-label>
+      <ion-input type="number" [(ngModel)]="recipe.personsServed" name="personsServed" min="0"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>tps préparation en min:</ion-label>
+      <ion-input type="number" [(ngModel)]="recipe.preparationTime" name="preparationTime" min="0"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>ingrédients :</ion-label>
+      <ion-input type="number" [(ngModel)]="recipe.preparationTime" name="preparationTime" min="0"></ion-input>
+
+      <ion-input type="number" [(ngModel)]="recipe.preparationTime" name="preparationTime" min="0"></ion-input>
+    </ion-item>
+    <button ion-button type="submit" block>Ajouter recette</button>
   </form>
   <app-call-friend></app-call-friend>
 </ion-content>

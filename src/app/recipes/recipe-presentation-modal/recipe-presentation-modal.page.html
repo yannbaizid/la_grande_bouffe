@@ -25,7 +25,15 @@
       <ion-icon name="people-outline"></ion-icon> nombre de personnes : {{recipe.personsServed}}
     </ion-item>
    
+
   </ion-list>
+  <ion-list>
+    <ion-list-header>
+      Ingrédients :
+    </ion-list-header>
+    <ion-item *ngFor="let ingredientQuantified of recipe.ingredientQuantifiedList">{{ingredientQuantified.quantity}} {{ingredientQuantified.ingredient.measurementUnit.name}} {{ingredientQuantified.ingredient.name}}</ion-item>
+    </ion-list>
+
   <app-call-friend></app-call-friend>
 
 </ion-content>

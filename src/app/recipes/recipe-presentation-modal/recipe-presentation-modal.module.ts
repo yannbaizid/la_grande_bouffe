@@ -16,6 +16,7 @@ import { RecipePresentationModalPage } from './recipe-presentation-modal.page';
     RecipePresentationModalPageRoutingModule,
     CallFriendModule
   ],
+  exports: [],
   providers: [CallNumber],
   declarations: [RecipePresentationModalPage]
 })
