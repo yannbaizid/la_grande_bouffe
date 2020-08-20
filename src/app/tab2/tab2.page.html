@@ -11,17 +11,19 @@
     <ion-toolbar>
       <ion-title size="large">Tab 2</ion-title>
     </ion-toolbar>
-    <form >
-      <ion-item>
-        <ion-label>Todo</ion-label>
-        <ion-input type="text" [(ngModel)]="recipe.name" name="title"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Description</ion-label>
-        <ion-textarea [(ngModel)]="recipe.difficulty" name="description"></ion-textarea>
-      </ion-item>
-      <button ion-button type="submit" block>Add Todo</button>
-    </form>
+   
 
-  </ion-header><app-call-friend></app-call-friend>
+  </ion-header>
+  <form >
+    <ion-item>
+      <ion-label>Todo</ion-label>
+      <ion-input type="text" [(ngModel)]="recipe.name" name="title"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Description</ion-label>
+      <ion-textarea [(ngModel)]="recipe.difficulty" name="description"></ion-textarea>
+    </ion-item>
+    <button ion-button type="submit" block>Add Todo</button>
+  </form>
+  <app-call-friend></app-call-friend>
 </ion-content>

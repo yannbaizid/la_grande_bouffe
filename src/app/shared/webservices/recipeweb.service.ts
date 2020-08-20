@@ -10,6 +10,6 @@ export class RecipeWebService {
   constructor(private http: HttpClient) { }
 
   findAll(): Observable<Recipe[]> {
-    return this.http.get<Recipe[]>(this.baseUrl + 'findall');
+    return this.http.get<Recipe[]>(this.baseUrl + 'find');
   }
 }

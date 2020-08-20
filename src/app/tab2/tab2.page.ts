@@ -8,7 +8,7 @@ import { Recipe } from '../shared/models/recipe';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
-  recipe: Recipe;
+  recipe = new Recipe();
 
   constructor() {}
 

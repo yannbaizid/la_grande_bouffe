@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>{{recipe.name}}</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="dismissModal()">Close</ion-button>
+      <ion-icon name="close-circle-outline" (click)="dismissModal()"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -11,8 +11,21 @@
   <div>
     <ion-img  src="../../../assets/img/{{recipe.imageLink}}.png"></ion-img>
   </div>
-  <div>difficulte: {{recipe.difficulty}}/5</div>
-  <div>temps de prépation: {{recipe.preparationTime}}min</div>
-  <div>nombre de personnes: {{recipe.personsServed}}</div>
-  <div> description à venir</div>
+  <ion-list>
+    <ion-item>
+      <ion-icon name="color-fill-outline"></ion-icon> {{recipe.name}}
+    </ion-item>
+    <ion-item>
+      <ion-icon name="bar-chart-outline"></ion-icon> difficulté : {{recipe.difficulty}}/5 
+      </ion-item>
+    <ion-item>
+      <ion-icon name="hourglass-outline"></ion-icon> temps de préparation :{{recipe.preparationTime}}mn
+    </ion-item>
+    <ion-item>
+      <ion-icon name="people-outline"></ion-icon> nombre de personnes : {{recipe.personsServed}}
+    </ion-item>
+   
+  </ion-list>
+  <app-call-friend></app-call-friend>
+
 </ion-content>

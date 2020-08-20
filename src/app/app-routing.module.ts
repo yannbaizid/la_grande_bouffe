@@ -8,7 +8,8 @@ const routes: Routes = [
   },
   {
     path: 'recipe-presentation-modal',
-    loadChildren: () => import('./recipes/recipe-presentation-modal/recipe-presentation-modal.module').then( m => m.RecipePresentationModalPageModule)
+    // tslint:disable-next-line: max-line-length
+    loadChildren: () => import('./recipes/recipe-presentation-modal/recipe-presentation-modal.module').then(m => m.RecipePresentationModalPageModule)
   }
 ];
 @NgModule({
@@ -17,4 +18,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
