@@ -80,4 +80,8 @@ export class Tab3Page implements AfterViewInit {
       this.saveY = currentY;
     }
   }
+
+  vibrate() {
+console.log('vibrate');
+  }
 }

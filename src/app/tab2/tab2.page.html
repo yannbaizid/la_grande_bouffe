@@ -11,31 +11,50 @@
     <ion-toolbar>
       <ion-title size="large">Tab 2</ion-title>
     </ion-toolbar>
-   
+
 
   </ion-header>
-  <form >
+  <form>
+    <!-- NAME -->
     <ion-item>
       <ion-label>Name:</ion-label>
       <ion-input type="text" [(ngModel)]="recipe.name" name="name"></ion-input>
     </ion-item>
+    <!-- DIFFICULTY -->
     <ion-item>
       <ion-label>Difficulté:</ion-label>
       <ion-input type="number" [(ngModel)]="recipe.difficulty" name="difficulty" max="5" min="0"></ion-input>
     </ion-item>
+    <!-- PERSONSSERVED -->
     <ion-item>
       <ion-label>nb personnes:</ion-label>
       <ion-input type="number" [(ngModel)]="recipe.personsServed" name="personsServed" min="0"></ion-input>
     </ion-item>
+    <!-- PREPARATION TIME -->
     <ion-item>
       <ion-label>tps préparation en min:</ion-label>
       <ion-input type="number" [(ngModel)]="recipe.preparationTime" name="preparationTime" min="0"></ion-input>
     </ion-item>
+
+    <!-- INGREDIENTS -->
     <ion-item *ngFor="let item of recipe.ingredientQuantifiedList;let index = index;">
-      <input [(ngModel)]="recipe.ingredientQuantifiedList[index]" placeholder="item" name="ingredientQuantified{{item}}">
+        <!-- select quantity -->
+        <ion-input type="number" [(ngModel)]="recipe.ingredientQuantifiedList[index].quantity" placeholder="item"
+        name="ingredientQuantified{{index}}quantity">
+      </ion-input>
+      <!-- select ingredient  -->
+      <ion-select  placeholder="Select One" [(ngModel)]="recipe.ingredientQuantifiedList[index].ingredient"  name="ingredientQuantified{{index}}ingredient">
+        <ion-select-option  value={{ingredient}} *ngFor="let ingredient of ingredientsFullList">
+          {{ingredient.measurementUnit.name}} {{ingredient.name}}
+        </ion-select-option>
+      </ion-select>
     </ion-item>
     <ion-icon name="add-circle-outline" (click)="addIngredient()"></ion-icon>
-    <button ion-button type="submit" block>Ajouter recette</button>
+
+    <button ion-button type="submit" (click)="HandleAddRecipeClick()" block>Ajouter recette</button>
+    <ion-button expand="block">Ajouter recette</ion-button>
   </form>
+  
+  {{recipe | json}}
   <app-call-friend></app-call-friend>
 </ion-content>

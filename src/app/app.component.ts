@@ -5,6 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { RecipeWebService } from 'src/app/shared/webservices/recipeweb.service';
 import { RecipeListService } from 'src/app/shared/services/recipe-list.service';
+import { IngredientListService } from './shared/services/ingredient-list.service';
+import { IngredientWebService } from './shared/webservices/ingredient-web.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -16,7 +18,9 @@ export class AppComponent implements OnInit {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private recipeListService: RecipeListService,
-    private recipeWebService: RecipeWebService
+    private recipeWebService: RecipeWebService,
+    private ingredientsListService: IngredientListService,
+    private ingredientsWebService: IngredientWebService
   ) {
     this.initializeApp();
   }
@@ -24,8 +28,20 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.setRecipesList();
     console.log('array in observable:' + this.recipeListService.getRecipesList());
+    this.setIngredientsList();
   }
-
+  setIngredientsList() {
+    this.ingredientsWebService.findAll().subscribe(
+      (values) => {
+        this.ingredientsListService.setIngredientsList(values);
+        console.log('salut je set les ingredients');
+        console.log(values);
+      }, (error) => {
+        console.error('TestWebServiceComponent getPosts :', error);
+        return null;
+      }
+    );
+  }
   setRecipesList() {
     this.recipeWebService.findAll().subscribe(
       (values) => {
