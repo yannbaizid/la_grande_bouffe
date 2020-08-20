@@ -31,12 +31,10 @@
       <ion-label>tps préparation en min:</ion-label>
       <ion-input type="number" [(ngModel)]="recipe.preparationTime" name="preparationTime" min="0"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label>ingrédients :</ion-label>
-      <ion-input type="number" [(ngModel)]="recipe.preparationTime" name="preparationTime" min="0"></ion-input>
-
-      <ion-input type="number" [(ngModel)]="recipe.preparationTime" name="preparationTime" min="0"></ion-input>
+    <ion-item *ngFor="let item of recipe.ingredientQuantifiedList;let index = index;">
+      <input [(ngModel)]="recipe.ingredientQuantifiedList[index]" placeholder="item" name="ingredientQuantified{{item}}">
     </ion-item>
+    <ion-icon name="add-circle-outline" (click)="addIngredient()"></ion-icon>
     <button ion-button type="submit" block>Ajouter recette</button>
   </form>
   <app-call-friend></app-call-friend>

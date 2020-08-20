@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Recipe } from '../shared/models/recipe';
+import { IngredientQuantified } from '../shared/models/ingredient-quantified';
 
 
 @Component({
@@ -8,8 +9,17 @@ import { Recipe } from '../shared/models/recipe';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
-  recipe = new Recipe();
+  recipe: Recipe;
+  ingredientQuantifiedList: IngredientQuantified[];
 
-  constructor() {}
+  constructor() {
+    this.recipe = new Recipe();
+    this.recipe.ingredientQuantifiedList = [new IngredientQuantified()];
+    console.log(this.recipe);
+  }
+  addIngredient() {
+    this.ingredientQuantifiedList.push(new IngredientQuantified());
+    console.log(this.ingredientQuantifiedList);
+  }
 
 }
